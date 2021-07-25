@@ -1021,6 +1021,8 @@ static irqreturn_t qpnp_kpdpwr_irq(int irq, void *_pon)
 	int rc;
 	struct qpnp_pon *pon = _pon;
 
+	dev_err(pon->dev, "Receive POWER_KEY input event\n");
+
 	rc = qpnp_pon_input_dispatch(pon, PON_KPDPWR);
 	if (rc)
 		dev_err(pon->dev, "Unable to send input event, rc=%d\n", rc);

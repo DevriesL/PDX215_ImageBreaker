@@ -1451,7 +1451,7 @@ int rtc6226_power_up(struct rtc6226_device *radio)
 
 	/* mpxconfig */
 	/* Disable Mute / De-emphasis / Volume 12 */
-	radio->registers[MPXCFG] = 0x000c |
+	radio->registers[MPXCFG] = 0x000f |
 		MPXCFG_CSR0_DIS_MUTE |
 		((de << 12) & MPXCFG_CSR0_DEEM)|
 		(MPXCFG_CSR0_BLNDADJUST & 0x0200);

@@ -4927,14 +4927,6 @@ int dsi_panel_switch(struct dsi_panel *panel)
 
 	mutex_lock(&panel->panel_lock);
 
-#if defined(CONFIG_DRM_SDE_SPECIFIC_PANEL) && defined(CONFIG_MACH_SONY_PDX214)
-	if (panel->spec_pdata->aod_mode) {
-		pr_notice("%s: AOD is on, skip timing switch cmd\n", __func__);
-		mutex_unlock(&panel->panel_lock);
-		return 0;
-	}
-#endif /* CONFIG_DRM_SDE_SPECIFIC_PANEL && CONFIG_MACH_SONY_PDX214 */
-
 	rc = dsi_panel_tx_cmd_set(panel, DSI_CMD_SET_TIMING_SWITCH);
 	if (rc)
 		DSI_ERR("[%s] failed to send DSI_CMD_SET_TIMING_SWITCH cmds, rc=%d\n",
